@@ -1,0 +1,5 @@
+"Feature","Description","Data_Type","Importance"
+"Radius_mean","Mean of the distances from the center to points on the perimeter of the tumor. Larger values typically indicate a more malignant tumor.","Numeric","Highly correlated with malignancy. Larger radius values are often seen in malignant tumors."
+"Texture_mean","Measures the local variation in the grayscale intensities of the tumor. Higher values can indicate malignant tumors.","Numeric","Texture is an important feature for classifying tumors. Malignant tumors typically have irregular texture patterns."
+"Smoothness_mean","Describes the smoothness of the tumor's contour. Tumors with more irregular shapes often have lower smoothness and may be malignant.","Numeric","Smoothness indicates the regularity of the tumor's shape. Benign tumors tend to be smoother."
+"Concavity_mean","Measures the degree of concavity (i.e., how much the tumor’s contour is indented). Malignant tumors tend to have more concave features.","Numeric","Concavity is directly related to the irregularity of the tumor shape. More concave shapes are more likely to be malignant."
