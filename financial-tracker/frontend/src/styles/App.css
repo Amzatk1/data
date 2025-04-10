@@ -1,0 +1,86 @@
+.App {
+  text-align: center;
+}
+
+/* LIGHT THEME (default) */
+.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.light .navbar {
+  background-color: #007bff;
+  color: white;
+}
+
+.light .navbar a {
+  color: white;
+}
+
+.light .btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.light .btn:hover {
+  background-color: #0056b3;
+}
+
+/* DARK THEME */
+.dark {
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+}
+
+.dark .navbar {
+  background-color: #222;
+  color: #f1f1f1;
+}
+
+.dark .navbar a {
+  color: #f1f1f1;
+}
+
+.dark .btn {
+  background-color: #333;
+  color: #f1f1f1;
+}
+
+.dark .btn:hover {
+  background-color: #555;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

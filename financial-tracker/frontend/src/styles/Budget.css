@@ -1,0 +1,378 @@
+/* Budget Container */
+.budget-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.budget-overview h2 {
+  font-size: 2em;
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.budget-overview p {
+  font-size: 1.3em;
+  margin-top: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.budget-overview {
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.overview-stats {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.stat {
+  flex: 1;
+  margin: 10px;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.amount {
+  font-size: 1.5em; 
+  color: #4ECDC4; 
+}
+
+.description {
+  color: #666666;
+  font-size: 0.9em;
+}
+
+/* Budget Status Summary */
+.budget-status-summary h3 {
+  font-size: 1.5em;
+  margin-top: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-item {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.good {
+  border-left: 5px solid #4CAF50; 
+}
+
+.warning {
+  border-left: 5px solid #FFA500; 
+}
+
+.over-budget {
+  border-left: 5px solid #FF6B6B; 
+}
+
+/* Budget Form */
+.budget-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.budget-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.input-group {
+  flex: 1;
+  min-width: calc(50% - 5px);
+}
+
+.budget-inputs input,
+.budget-inputs select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: calc(50% - 5px);
+  box-sizing: border-box;
+}
+
+.budget-inputs label {
+  font-weight: bold;
+}
+
+.modal-content .disabled-input {
+  cursor: not-allowed;
+  background-color: #f0f0f0; 
+  pointer-events: none; 
+}
+
+/* Add / Submit Button */
+.add-budget-btn {
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.add-budget-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Input and select styling for filter section */
+.filter-column label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.filter-column select,
+.filter-column input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+}
+
+/* Styling the dropdown with a pointer cursor */
+.filter-column select {
+  cursor: pointer;
+}
+
+/* Apply Filters Button Container */
+.apply-filters-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling the Apply Filters Button */
+.apply-filters-btn {
+  width: 100%;
+  max-width: 600px; 
+  padding: 12px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+
+.apply-filters-btn:hover {
+  background-color: #218838;
+}
+
+/* Additional styles for toggling filter visibility */
+.filter-toggle {
+  margin-bottom: 15px;
+}
+
+/* Styles for the filter dropdown when shown */
+.filter-dropdown {
+  align-items: flex-start;
+  border: 1px solid #ccc;
+  border-radius: 5px; 
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px; 
+}
+
+/* Adding some spacing to the filter columns */
+.filter-column {
+  margin-bottom: 15px; /* Margin below each filter column */
+}
+
+/* Budget Table */
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.budget-table th, .budget-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.budget-table th {
+  background-color: #f4f4f4;
+}
+
+.budget-table th.sortable {
+  cursor: pointer;
+}
+
+.budget-table th.sortable:hover {
+  background-color: #e0e0e0;
+}
+
+/* Action Buttons */
+.budget-table button {
+  padding: 5px 10px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  margin: 2px;
+  border-radius: 3px;
+}
+
+.budget-table button:first-child {
+  background-color: #ffc107;
+  color: black;
+}
+
+.budget-table button:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Dropdown for Category */
+.budget-form select {
+  padding: 8px;
+}
+
+
+/* Success Message */
+.success-message {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Error Message */
+.error-message {
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #dc3545;
+  color: white;
+}
+
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+
+.pagination li {
+  margin: 0 10px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination li:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination .active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 8px 12px;
+}
+
+.pagination li.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination .previous, .pagination .next {
+  font-weight: bold;
+}
+
+/* Adding styles for Previous and Next buttons */
+.pagination .previous,
+.pagination .next {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination .previous:hover,
+.pagination .next:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive: Stack on small screens */
+@media (max-width: 600px) {
+  /* Budget Inputs */
+  .budget-inputs {
+    flex-direction: column; 
+    width: 100%;
+  }
+
+  .budget-inputs input,
+  .budget-inputs select {
+    width: 100%; 
+  }
+
+  /* Budget Table */
+  .budget-table {
+    font-size: 12px; 
+  }
+
+  .budget-table th,
+  .budget-table td {
+    padding: 8px;
+  }
+
+  /* Filter Dropdown */
+  .filter-dropdown {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .filter-column {
+    width: 100%; 
+  }
+}

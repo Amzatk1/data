@@ -1,0 +1,189 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build:
+      context: .
+      dockerfile: api-gateway/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - user-service
+      - transaction-service
+      - budget-service
+      - analytics-service
+      - notification-service
+    networks:
+      - app-network
+    environment:
+      - USER_SERVICE_URL=http://user-service:5001
+
+  user-service:
+    build:
+      context: .
+      dockerfile: user-service/Dockerfile
+    ports:
+      - "5001:5001"
+    environment:
+      - DATABASE_URL=postgresql://user:password@user-db:5432/user_db
+      - JWT_SECRET_KEY=3b5e41af18179f530c5881a5191e15f0ab35eed2fefdc068fda254eed3fb1ecb
+    depends_on:
+      - user-db
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      retries: 3
+
+  transaction-service:
+    build:
+      context: .
+      dockerfile: transaction-service/Dockerfile
+    ports:
+      - "5002:5002"
+    environment:
+      - DATABASE_URL=postgresql://user:password@transaction-db:5432/transaction_db
+    depends_on:
+      - transaction-db
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 30s
+      retries: 3
+
+  budget-service:
+    build:
+      context: .
+      dockerfile: budget-service/Dockerfile
+    ports:
+      - "5003:5003"
+    environment:
+      - DATABASE_URL=postgresql://user:password@budget-db:5432/budget_db
+    depends_on:
+      - budget-db
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5003/health"]
+      interval: 30s
+      retries: 3
+
+  analytics-service:
+    build:
+      context: .
+      dockerfile: analytics-service/Dockerfile
+    ports:
+      - "5004:5004"
+    environment:
+      - DATABASE_URL=postgresql://user:password@analytics-db:5432/analytics_db
+    depends_on:
+      - analytics-db
+    networks:
+      - app-network
+
+  notification-service:
+    build:
+      context: .
+      dockerfile: notification-service/Dockerfile
+    ports:
+      - "5005:5005"
+    environment:
+      - DATABASE_URL=postgresql://user:password@notification-db:5432/notification_db
+    depends_on:
+      - notification-db
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-gateway
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+
+  # Separate databases for each microservice
+  user-db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: user_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - user_db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  transaction-db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: transaction_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - transaction_db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  budget-db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: budget_db
+    ports:
+      - "5435:5432"
+    volumes:
+      - budget_db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  analytics-db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: analytics_db
+    ports:
+      - "5436:5432"
+    volumes:
+      - analytics_db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  notification-db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: notification_db
+    ports:
+      - "5437:5432"
+    volumes:
+      - notification_db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  user_db_data:
+  transaction_db_data:
+  budget_db_data:
+  analytics_db_data:
+  notification_db_data:
+
+networks:
+  app-network:
+    driver: bridge
